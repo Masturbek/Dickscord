@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Основной цвет -->
+    <Color x:Key="Color.Main">#FF34373E</Color>
+    <SolidColorBrush x:Key="Color.Main.Solid" Color="{StaticResource Color.Main}"/>
+
+    <!-- Рамка окна -->
+    <Color x:Key="Color.Main.Border">#FF191919</Color>
+    <SolidColorBrush x:Key="Color.Main.Border.Solid" Color="{StaticResource Color.Main.Border}"/>
+
+    <!-- "Шапка" окна -->
+    <Color x:Key="Color.Main.Header">#FF222428</Color>
+    <SolidColorBrush x:Key="Color.Main.Header.Solid" Color="{StaticResource Color.Main.Header}"/>
+
+    <!-- "Шапка" окна -->
+    <Color x:Key="Color.Main.Foreground">#FFF5F5F5</Color>
+    <SolidColorBrush x:Key="Color.Main.Foreground.Solid" Color="{StaticResource Color.Main.Foreground}"/>
+
+</ResourceDictionary>

@@ -1,0 +1,48 @@
+﻿using Hardcodet.Wpf.TaskbarNotification;
+using Progect1.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Progect1.Views
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        { 
+            InitializeComponent();
+            //Startup.AppStart();
+        }
+
+        public void AppShow(object sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = WindowState.Normal;
+        }
+        public void AppExit(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void ClickV(object sender, EventArgs e)
+        {
+            
+        }
+    }
+}

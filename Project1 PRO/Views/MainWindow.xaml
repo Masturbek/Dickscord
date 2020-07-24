@@ -1,0 +1,156 @@
+﻿<Window x:Class="Progect1.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ctrl="clr-namespace:Progect1.Controls"
+        xmlns:vm="clr-namespace:Progect1.ViewModels"
+        xmlns:pageVm="clr-namespace:Progect1.ViewModels.Pages"
+        xmlns:pages="clr-namespace:Progect1.Views.Pages"
+        xmlns:local="clr-namespace:Progect1" 
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        mc:Ignorable="d"
+        x:Name="wind"
+        Title="MainWindow" 
+        Height="480" Width="400" 
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="Transparent"
+        WindowStyle="None" AllowsTransparency="True"        
+        d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}">
+    <!-- 
+        d:DataContext указывает дизайнеру (студии), что у этого класса будет данный тип в виде источника.
+        Это позволяет студии отображать данные, давать подсказки при написание кода и так далее.
+    -->
+    
+    <!--
+        Заметьте, что дизайн окна построен так, что нету огромных отступов, все элементы сами подстраиваются под нужный размер.
+        Не используйте конструктор для расположения объектов, учите XAML (он очень простой) и пишите объекты сами, располагая их в Grid и другие панели, указав нужное положение
+        при помощи таких свойств, как VerticalAlignment и HorizontalAlignment
+    -->
+    
+    <Window.Resources>
+        <ContextMenu x:Key="Menu" Background="White">
+            <MenuItem Header="Показать/Скрыть" Click="AppShow"/>
+            <MenuItem Header="Выйти" Click="AppExit" />
+        </ContextMenu>
+    </Window.Resources>
+    <!--
+        WindowChrome - это стандартная вещь WPF, которая позволяет сделать нестандартное окно, но с возможностью перетаскивания и изменения размера.
+        Я однажды делал окно по этой технологии на подобии Visual Studio, можно посмотреть здесь: https://ru.stackoverflow.com/a/1011208/220553    
+    -->
+    <WindowChrome.WindowChrome>
+        <!--
+            Если нужен изменяемый размер окна, то 
+            - Задаем ResizeBorderThickness - это размер границ, за которые можно потянуть.
+            - Меняем у окна ResizeMode на нужное.
+        
+            Значение CaptionHeight - это какого размера будет область сверху окна, за которую можно будет перетащить окно.
+        -->
+        <WindowChrome CaptionHeight="32" ResizeBorderThickness="1" />
+    </WindowChrome.WindowChrome>
+    
+    <!--
+        Так делать плохо, ибо нет контроля над VM слоем, да и View слой не должен контролировать срок жизни VM.
+        Про это можно почитать здесь: https://ru.stackoverflow.com/a/562586/220553
+    
+    <Window.DataContext>
+        <avm:AuthViewModel/>
+    </Window.DataContext>
+    -->
+
+    <Grid Margin="5">
+        <!--
+            Здесь первый Border существует лишь для того, чтобы сделать тень окну. 
+            Если задать эффект тени основному Border, то каждый элемент внутри будет иметь эту тень и потеряет четкость.
+        
+            Почему Border? Потому, что он позволяет сделать рамку, на данный момент она темно-серая, едва заметная, но очень хорошо помогает сделать окно "целым", не сливающимся с чем либо другим.
+        -->
+        <Border Background="{StaticResource Color.Main.Solid}">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="5"/>
+            </Border.Effect>
+        </Border>
+        <Border Background="{StaticResource Color.Main.Solid}"
+                BorderBrush="{StaticResource Color.Main.Border.Solid}" 
+                BorderThickness="1" >
+            <!--
+                Разделяем окно на 2 части:
+                1. Верхняя шапка с кнопками закрытия, сворачивания и прочим. Занимать будет определенный размер.
+                2. Остальной контент, который будет занимать всю оставшуюся область.
+            -->
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <!-- 
+                        Делаем такой же фокус с тенью, чтоб шапка была более выразительной, ну и задаем нужные цвета из стилей.
+                        Объекты расположены в Grid потому, что он позволяет расположить внутри себя объекты друг под другом, получаются некие слои, а для тени это то что надо!
+                    -->
+                    <Border Background="{StaticResource Color.Main.Header.Solid}"
+                            BorderBrush="{StaticResource Color.Main.Border.Solid}"
+                            BorderThickness="0 0 0 1" >
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="1" BlurRadius="2" Direction="-90" Opacity=".5" />
+                        </Border.Effect>
+                    </Border>
+                    <Grid VerticalAlignment="Center" Margin="5 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Проект 1"
+                                   TextOptions.TextFormattingMode="Display"
+                                   FontSize="12" Foreground="{StaticResource Color.Main.Foreground.Solid}"
+                                   Margin="2 1 0 0"
+                                   FontWeight="Medium"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                            <!--
+                                Старайтесь не использовать картинки, ибо они сильно нагружают приложение по весу, а также плохо дружат с изменением размера,
+                                что приводит к кривизне отображения при разных расрешениях монитора и разных размерах контролов.
+                                Альтернатива картинкам - векторы, это простой набор точек, который без потерь подстраивается под любой размер.
+                            
+                                Конкретно в этом случае я брал иконки с сайта: https://materialdesignicons.com/
+                            -->
+
+                            <!--#region Кнопка сворачивания-->
+                            <ctrl:VectorButton Path="M20,14H4V10H20"
+                                               Width="20" Height="15" 
+                                               Foreground="Green" 
+                                               Command="{Binding MinimizeCommand}" CommandParameter="{Binding ElementName=wind}"/>
+                            <!--#endregion-->
+                            <!--#region Кнопка закрытия-->
+                            <ctrl:VectorButton Path="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                                               Width="20" Height="15" 
+                                               Foreground="Red"
+                                               Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=wind}"/>
+                            <!--#endregion-->
+
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <!-- Можно вынести в ресурсы (как цвета и стили), я лично привык видет это здесь. -->
+                    <Grid.Resources>
+                        <DataTemplate DataType="{x:Type pageVm:LoginPageViewModel}">
+                            <pages:LoginPage/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type pageVm:RegistrationPageViewModel}">
+                            <pages:RegistrationPage/>
+                        </DataTemplate>
+                    </Grid.Resources>
+                    <ContentControl Content="{Binding CurrentPage}"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!--        
+        <tb:TaskbarIcon IconSource="../Resources/icon.ico"
+                        ToolTipText="Dickscord" 
+                        TrayLeftMouseDown="AppShow"
+                        PopupActivation="RightClick"
+                        ContextMenu="{StaticResource Menu}"/>
+        -->
+    </Grid>
+</Window>
