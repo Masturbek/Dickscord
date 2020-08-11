@@ -28,21 +28,6 @@ namespace Progect1.Views
         public MainWindow()
         { 
             InitializeComponent();
-            //Startup.AppStart();
-        }
-
-        public void AppShow(object sender, EventArgs e)
-        {
-            this.Show();
-            this.WindowState = WindowState.Normal;
-        }
-        public void AppExit(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void ClickV(object sender, EventArgs e)
-        {
-            
         }
     }
 }

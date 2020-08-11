@@ -1,0 +1,147 @@
+﻿<Window x:Class="Progect1.Views.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Progect1.Views"
+        xmlns:pageVm="clr-namespace:Progect1.ViewModels.Pages"
+          xmlns:vm="clr-namespace:Progect1.ViewModels" xmlns:ctrl="clr-namespace:Progect1.Controls" xmlns:pages="clr-namespace:Progect1.Views.Pages"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="Transparent"
+        WindowStyle="None" AllowsTransparency="True" d:DataContext="{d:DesignInstance {x:Type vm:DMainViewModel}}" x:Name="wind">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type pageVm:FriendListViewModel}">
+            <pages:FriendList/>
+        </DataTemplate>
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <!--
+            Если нужен изменяемый размер окна, то 
+            - Задаем ResizeBorderThickness - это размер границ, за которые можно потянуть.
+            - Меняем у окна ResizeMode на нужное.
+        
+            Значение CaptionHeight - это какого размера будет область сверху окна, за которую можно будет перетащить окно.
+        -->
+        <WindowChrome CaptionHeight="32" ResizeBorderThickness="1" />
+    </WindowChrome.WindowChrome>
+    <Grid >
+
+        <!--        
+        <tb:TaskbarIcon IconSource="../Resources/icon.ico"
+                        ToolTipText="Dickscord" 
+                        TrayLeftMouseDown="AppShow"
+                        PopupActivation="RightClick"
+                        ContextMenu="{StaticResource Menu}"/>
+        -->
+        <!--
+            Здесь первый Border существует лишь для того, чтобы сделать тень окну. 
+            Если задать эффект тени основному Border, то каждый элемент внутри будет иметь эту тень и потеряет четкость.
+        
+            Почему Border? Потому, что он позволяет сделать рамку, на данный момент она темно-серая, едва заметная, но очень хорошо помогает сделать окно "целым", не сливающимся с чем либо другим.
+        -->
+        <Border Background="#FF36393F">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="5"/>
+            </Border.Effect>
+        </Border>
+        <Border
+            BorderBrush="{StaticResource Color.Main.Border.Solid}" 
+            BorderThickness="1" Background="#FF36393F" >
+            <!--
+                Разделяем окно на 2 части:
+                1. Верхняя шапка с кнопками закрытия, сворачивания и прочим. Занимать будет определенный размер.
+                2. Остальной контент, который будет занимать всю оставшуюся область.
+            -->
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <!-- 
+                        Делаем такой же фокус с тенью, чтоб шапка была более выразительной, ну и задаем нужные цвета из стилей.
+                        Объекты расположены в Grid потому, что он позволяет расположить внутри себя объекты друг под другом, получаются некие слои, а для тени это то что надо!
+                    -->
+                    <Border Background="{StaticResource Color.Main.Header.Solid}"
+                        BorderBrush="{StaticResource Color.Main.Border.Solid}"
+                        BorderThickness="0 0 0 0" >
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="1" BlurRadius="2" Direction="-90" Opacity=".5" />
+                        </Border.Effect>
+                    </Border>
+                    <Grid VerticalAlignment="Center" Margin="5 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="DICKSCORD"
+                            TextOptions.TextFormattingMode="Display"
+                            FontSize="12"
+                            Margin="2 1 0 0"
+                            FontWeight="Bold" Foreground="#FF999999" FontFamily="Segoe UI Symbol" TextDecorations="{x:Null}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                            <!--
+                                Старайтесь не использовать картинки, ибо они сильно нагружают приложение по весу, а также плохо дружат с изменением размера,
+                                что приводит к кривизне отображения при разных расрешениях монитора и разных размерах контролов.
+                                Альтернатива картинкам - векторы, это простой набор точек, который без потерь подстраивается под любой размер.
+                            
+                                Конкретно в этом случае я брал иконки с сайта: https://materialdesignicons.com/
+                            -->
+
+                            <!--#endregion-->
+                            <!--#endregion-->
+
+                            <!--#region Кнопка сворачивания-->
+                            <ctrl:VectorButton Path="M20,14H4V10H20"
+                                Width="20" Height="15" 
+                                Foreground="Green" 
+                                Command="{Binding MinimizeCommand}" CommandParameter="{Binding ElementName=wind}"/>
+                            <!--#region Кнопка закрытия-->
+                            <ctrl:VectorButton Path="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                                Width="20" Height="15" 
+                                Foreground="Red"
+                                Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=wind}"/>
+
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" >
+                    <!-- Можно вынести в ресурсы (как цвета и стили), я лично привык видет это здесь. -->
+                    <Grid.Resources>
+                        <DataTemplate DataType="{x:Type pageVm:LoginPageViewModel}">
+                            <pages:LoginPage/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type pageVm:RegistrationPageViewModel}">
+                            <pages:RegistrationPage/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type pageVm:PersonalMessagePageViewModel}">
+                            <pages:PersonalMessagePage/>
+                        </DataTemplate>
+                    </Grid.Resources>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50">
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                        </ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Content="{Binding CurrentPage}" Grid.Column="1" Grid.Row="1" Margin="-1 0 0 0"/>
+                    <Border>
+                        <Grid Background="#FF202225">
+                        <Button ToolTip="Список друзей" Command="{Binding ChangePageCommand}" CommandParameter="FriendList" Style="{StaticResource Button.CircleLeftGUI}" Height="40" Width="40" Margin="0 0 0 370" Background="#FF006E19" BorderBrush="#FF707070" Foreground="#FFD7DDF2">
+                            <Viewbox >
+                                <Canvas Width="24" Height="24">
+                                    <Path Fill="#FFB4B4B4" Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                                </Canvas>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

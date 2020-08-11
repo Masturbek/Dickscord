@@ -10,7 +10,7 @@
     <SolidColorBrush x:Key="Color.Main.Border.Solid" Color="{StaticResource Color.Main.Border}"/>
 
     <!-- "Шапка" окна -->
-    <Color x:Key="Color.Main.Header">#FF222428</Color>
+    <Color x:Key="Color.Main.Header">#FF202225</Color>
     <SolidColorBrush x:Key="Color.Main.Header.Solid" Color="{StaticResource Color.Main.Header}"/>
 
     <!-- "Шапка" окна -->

@@ -10,25 +10,26 @@
     <Grid>
         <Border Background="{StaticResource Color.Main.Header.Solid}" 
                 VerticalAlignment="Center" HorizontalAlignment="Center"
-                CornerRadius="12" MinWidth="250">
+                CornerRadius="12" MinWidth="250" MaxWidth="250">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
+                <TextBlock Grid.Row="1" Margin="5 0 0 80" Text="{Binding ErrorText}" Foreground="#FFB60000" FontFamily="Segoe UI Light"/>
                 <Grid Margin="0 5 0 0" VerticalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition />
-                        <RowDefinition />
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Margin="0 0 0 10">
-                        <TextBlock Text="Логин" 
+                        <TextBlock 
                                    FontSize="18" 
                                    TextAlignment="Center"
                                    FontWeight="Medium"
                                    Foreground="#FFCCCDCE"
-                                   Margin="0 0 0 3"/>
+                                   Margin="0 0 0 3"><Run Text="Логин"/></TextBlock>
                         <TextBox Text="{Binding Login}" Style="{StaticResource TextBox.Auth}"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1">
@@ -38,16 +39,17 @@
                                    FontWeight="Medium"
                                    Foreground="#FFCCCDCE"
                                    Margin="0 0 0 3"/>
-                        <TextBox Text="{Binding Password}" Style="{DynamicResource TextBox.Auth}"/>
+                        <TextBox  Text="{Binding Password}" Style="{DynamicResource TextBox.Auth}"/>
                     </StackPanel>
                 </Grid>
 
-                <StackPanel Grid.Row="1" Margin="0 25 0 0">
+                <StackPanel Grid.Row="2" Margin="0 -65 0 0">
                     <Button VerticalAlignment="Center" HorizontalAlignment="Center"
                             Style="{StaticResource Button.Auth.Big}"
                             Padding="30 3 30 4"
                             Content="Войти" 
-                            Command="{Binding LoginCommand}"/>
+                            Command="{Binding LoginCommand}">
+                    </Button>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
                         <TextBlock Text="Нет аккаунта?" Margin="0 0 5 0" Foreground="Gray"/>
                         <Button Content="Зарегистрироваться" Foreground="#FF6D83CD" 
@@ -55,6 +57,11 @@
                                 CommandParameter="Registration"/>
                     </StackPanel>
                 </StackPanel>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Center"
+                                    Style="{StaticResource Button.Auth.Big}"
+                                    Padding="30 3 30 4"
+                                    Content="Войти" 
+                                    Command="{Binding NWCommand}" Margin="135,41,-36,5" Grid.Row="1"/>
             </Grid>
         </Border>
     </Grid>

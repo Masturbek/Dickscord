@@ -35,6 +35,65 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>
+             </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0" Storyboard.TargetProperty="Margin" To="0 1 0 -1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0" Storyboard.TargetProperty="Margin" To="0 0 0 0"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Border.Animation" TargetType="Border" >
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF3A3E44" Duration="0:0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF36393F" Duration="0:0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="Button.AnimationCircle" TargetType="Button" >
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.7" Duration="0:0:0:0.2" />
+                        </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -64,6 +123,132 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <!-- Стиль для круглой кнопки. -->
+    <Style x:Key="Button.Circle" TargetType="Button">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="#FFD7DDF2"/>
+        <Setter Property="Background" Value="#FF697EC9"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="7"/>
+        <Setter Property="Border.CornerRadius" Value="500"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" CornerRadius="1000" 
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="Hand">
+                        <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="Button.CircleLeftGUI" TargetType="Button" >
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="#FFD7DDF2"/>
+        <Setter Property="Background" Value="#FF697EC9"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="7"/>
+        <Setter Property="Border.CornerRadius" Value="500"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" CornerRadius="{TemplateBinding Border.CornerRadius}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="Hand">
+                        <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Border.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="CornerRadius">
+                                                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.03">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="19" BottomRight="19" TopLeft="19" TopRight="19" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.06">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="18" BottomRight="18" TopLeft="18" TopRight="18" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.09">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="17" BottomRight="17" TopLeft="17" TopRight="17" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="16" BottomRight="16" TopLeft="16" TopRight="16" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.12">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="15" BottomRight="15" TopLeft="15" TopRight="15" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="CornerRadius">
+                                                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.03">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="16" BottomRight="16" TopLeft="16" TopRight="16" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.06">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="17" BottomRight="17" TopLeft="17" TopRight="17" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.09">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="18" BottomRight="18" TopLeft="18" TopRight="18" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="19" BottomRight="19" TopLeft="19" TopRight="19" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.12">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20" />
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Border.Triggers>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+  
+
+
+
 
     <Style x:Key="TextBox.Auth" TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="#FF303339"/>
@@ -116,4 +301,24 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
+
+
+    <Style x:Key="ChatControl" TargetType="TextBox">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#FF40444B" />
+        <Setter Property="CaretBrush" Value="White"/>
+        <Setter Property="Border.CornerRadius" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border CornerRadius="{TemplateBinding Border.CornerRadius}" Padding="2" BorderThickness="1" Background="#FF40444B">
+                        <ScrollViewer Margin="0 0 0 0" VerticalAlignment="Center" x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

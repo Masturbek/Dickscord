@@ -27,3 +27,38 @@ C:\Users\bilya\Desktop\Новая папка\Project1 PRO\obj\Debug\Progect1.csp
 C:\Users\bilya\Desktop\Новая папка\Project1 PRO\obj\Debug\Progect1.csproj.CopyComplete
 C:\Users\bilya\Desktop\Новая папка\Project1 PRO\obj\Debug\Progect1.exe
 C:\Users\bilya\Desktop\Новая папка\Project1 PRO\obj\Debug\Progect1.pdb
+G:\Программирование\Dickscord\Project1 PRO\bin\Debug\Progect1.exe.config
+G:\Программирование\Dickscord\Project1 PRO\bin\Debug\Progect1.exe
+G:\Программирование\Dickscord\Project1 PRO\bin\Debug\Progect1.pdb
+G:\Программирование\Dickscord\Project1 PRO\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
+G:\Программирование\Dickscord\Project1 PRO\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
+G:\Программирование\Dickscord\Project1 PRO\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.csprojAssemblyReference.cache
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Styles\Colors.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Styles\Controls.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Controls\VectorButton.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\MainWindow.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\LoginPage.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\RegistrationPage.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\App.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1_MarkupCompile.cache
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1_MarkupCompile.lref
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\App.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Controls\VectorButton.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\MainWindow.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\LoginPage.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\RegistrationPage.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.g.resources
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.Properties.Resources.resources
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.csproj.GenerateResource.cache
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.csproj.CoreCompileInputs.cache
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.csproj.CopyComplete
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.exe
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Progect1.pdb
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Window1.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Window1.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\FriendList.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\FriendList.baml
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\PersonalMessagePage.g.cs
+G:\Программирование\Dickscord\Project1 PRO\obj\Debug\Views\Pages\PersonalMessagePage.baml

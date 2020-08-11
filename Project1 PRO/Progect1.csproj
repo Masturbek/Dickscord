@@ -67,21 +67,37 @@
     <Compile Include="Controls\VectorButton.xaml.cs">
       <DependentUpon>VectorButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthModel\RegistrationModel.cs" />
+    <Compile Include="Models\FriendModel\FriendListModel.cs" />
+    <Compile Include="Models\AuthModel\LoginModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseVewModel.cs" />
+    <Compile Include="ViewModels\DMainViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Statics.cs" />
+    <Compile Include="ViewModels\Pages\FriendListViewModel.cs" />
     <Compile Include="ViewModels\Pages\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\PersonalMessagePageViewModel.cs" />
     <Compile Include="ViewModels\Pages\RegistrationPageViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\Pages\FriendList.xaml.cs">
+      <DependentUpon>FriendList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\PersonalMessagePage.xaml.cs">
+      <DependentUpon>PersonalMessagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\VectorButton.xaml">
       <SubType>Designer</SubType>
@@ -107,11 +123,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Pages\FriendList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\PersonalMessagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,9 +167,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Pages\AppPages\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\noavatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\noavatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Pages\noavatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

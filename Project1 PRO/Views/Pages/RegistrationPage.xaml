@@ -8,7 +8,7 @@
     <Grid>
         <Border Background="{StaticResource Color.Main.Header.Solid}" 
                 VerticalAlignment="Center" HorizontalAlignment="Center"
-                CornerRadius="12" MinWidth="250">
+                CornerRadius="12" MinWidth="250" MaxWidth="250">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -22,38 +22,38 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Margin="0 0 0 10">
-                        <TextBlock Text="Никнейм" 
-                                   FontSize="18" 
-                                   TextAlignment="Center"
-                                   FontWeight="Medium"
-                                   Foreground="#FFCCCDCE"
-                                   Margin="0 0 0 3"/>
-                        <TextBox Text="123" Style="{StaticResource TextBox.Auth}"/>
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Margin="0 0 0 10">
-                        <TextBlock Text="Пароль" 
-                                   FontSize="18" 
-                                   TextAlignment="Center"
-                                   FontWeight="Medium"
-                                   Foreground="#FFCCCDCE"
-                                   Margin="0 0 0 3"/>
-                        <TextBox Text="123" Style="{StaticResource TextBox.Auth}"/>
-                    </StackPanel>
-                    <StackPanel Grid.Row="2">
                         <TextBlock Text="Почта" 
                                    FontSize="18" 
                                    TextAlignment="Center"
                                    FontWeight="Medium"
                                    Foreground="#FFCCCDCE"
                                    Margin="0 0 0 3"/>
-                        <TextBox Text="123" Style="{StaticResource TextBox.Auth}"/>
+                        <TextBox Text="{Binding Email}" Style="{StaticResource TextBox.Auth}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="0 0 0 10">
+                        <TextBlock Text="Логин" 
+                                   FontSize="18" 
+                                   TextAlignment="Center"
+                                   FontWeight="Medium"
+                                   Foreground="#FFCCCDCE"
+                                   Margin="0 0 0 3"/>
+                        <TextBox Text="{Binding Login}" Style="{StaticResource TextBox.Auth}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="Пароль" 
+                                   FontSize="18" 
+                                   TextAlignment="Center"
+                                   FontWeight="Medium"
+                                   Foreground="#FFCCCDCE"
+                                   Margin="0 0 0 3"/>
+                        <TextBox Text="{Binding Password}" Style="{StaticResource TextBox.Auth}"/>
                     </StackPanel>
                 </Grid>
                 <StackPanel Grid.Row="1" Margin="0 25 0 0">
                     <Button VerticalAlignment="Center" HorizontalAlignment="Center"
                             Style="{StaticResource Button.Auth.Big}"
                             Padding="30 3 30 4"
-                            Content="Регистрация" />
+                            Content="Регистрация" Command="{Binding Registration}"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
                         <TextBlock Text="Есть аккаунт?" Margin="0 0 5 0" Foreground="Gray"/>
                         <Button Content="Войти" Foreground="#FF6D83CD" 

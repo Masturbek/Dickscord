@@ -1,4 +1,5 @@
 ﻿using Progect1.ViewModels.Pages;
+using Progect1.Views;
 using Progect1.Views.Pages;
 using System.Diagnostics;
 using System.Windows;
@@ -16,21 +17,26 @@ namespace Progect1.ViewModels
              */
             MinimizeCommand = new RelayCommand<Window>(Minimize);
             CloseCommand = new RelayCommand<Window>(Close);
+            NormalizeCommand = new RelayCommand<Window>(Normalize);
             ChangePageCommand = new RelayCommand<string>(ChangePage);
+
 
             LoginPageViewModel = new LoginPageViewModel(this);
             RegistrationPageViewModel = new RegistrationPageViewModel(this);
 
             CurrentPage = LoginPageViewModel;
         }
-
         #region Закрыть/Свернуть
         public ICommand MinimizeCommand { get; }
         public ICommand CloseCommand { get; }
+        public ICommand NormalizeCommand { get; }
+
 
         private void Close(Window window) => window.Close();
         private void Minimize(Window window) => window.WindowState = WindowState.Minimized;
+        private void Normalize(Window window) => window.WindowState = WindowState.Normal;
         #endregion
+
 
         #region Страницы
         private LoginPageViewModel LoginPageViewModel { get; }

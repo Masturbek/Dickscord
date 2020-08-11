@@ -20,17 +20,17 @@
         d:DataContext указывает дизайнеру (студии), что у этого класса будет данный тип в виде источника.
         Это позволяет студии отображать данные, давать подсказки при написание кода и так далее.
     -->
-    
+
     <!--
         Заметьте, что дизайн окна построен так, что нету огромных отступов, все элементы сами подстраиваются под нужный размер.
         Не используйте конструктор для расположения объектов, учите XAML (он очень простой) и пишите объекты сами, располагая их в Grid и другие панели, указав нужное положение
         при помощи таких свойств, как VerticalAlignment и HorizontalAlignment
     -->
-    
+
     <Window.Resources>
         <ContextMenu x:Key="Menu" Background="White">
-            <MenuItem Header="Показать/Скрыть" Click="AppShow"/>
-            <MenuItem Header="Выйти" Click="AppExit" />
+            <MenuItem Header="Показать/Скрыть" Command="{Binding MinimizeCommand}" CommandParameter="{Binding ElementName=wind}"/>
+            <MenuItem Header="Выйти" Command="{Binding MinimizeCommand}" CommandParameter="{Binding ElementName=wind}"/>
         </ContextMenu>
     </Window.Resources>
     <!--
@@ -47,7 +47,7 @@
         -->
         <WindowChrome CaptionHeight="32" ResizeBorderThickness="1" />
     </WindowChrome.WindowChrome>
-    
+
     <!--
         Так делать плохо, ибо нет контроля над VM слоем, да и View слой не должен контролировать срок жизни VM.
         Про это можно почитать здесь: https://ru.stackoverflow.com/a/562586/220553
@@ -64,14 +64,14 @@
         
             Почему Border? Потому, что он позволяет сделать рамку, на данный момент она темно-серая, едва заметная, но очень хорошо помогает сделать окно "целым", не сливающимся с чем либо другим.
         -->
-        <Border Background="{StaticResource Color.Main.Solid}">
+        <Border>
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="5"/>
             </Border.Effect>
         </Border>
-        <Border Background="{StaticResource Color.Main.Solid}"
+        <Border
                 BorderBrush="{StaticResource Color.Main.Border.Solid}" 
-                BorderThickness="1" >
+                BorderThickness="1" Background="#FF36393F" >
             <!--
                 Разделяем окно на 2 части:
                 1. Верхняя шапка с кнопками закрытия, сворачивания и прочим. Занимать будет определенный размер.
@@ -99,11 +99,11 @@
                             <ColumnDefinition/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Проект 1"
+                        <TextBlock Grid.Column="0" Text="DICKSCORD"
                                    TextOptions.TextFormattingMode="Display"
-                                   FontSize="12" Foreground="{StaticResource Color.Main.Foreground.Solid}"
+                                   FontSize="12"
                                    Margin="2 1 0 0"
-                                   FontWeight="Medium"/>
+                                   FontWeight="Bold" Foreground="#FF999999" FontFamily="Segoe UI Symbol" TextDecorations="{x:Null}"/>
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
 
                             <!--
@@ -145,12 +145,14 @@
             </Grid>
         </Border>
 
-        <!--        
+
         <tb:TaskbarIcon IconSource="../Resources/icon.ico"
-                        ToolTipText="Dickscord" 
-                        TrayLeftMouseDown="AppShow"
+                        ToolTipText="Dickscord"     
+                        LeftClickCommand="{Binding MinimizeCommand}"
+                        LeftClickCommandParameter="{Binding ElementName=wind}"
                         PopupActivation="RightClick"
-                        ContextMenu="{StaticResource Menu}"/>
-        -->
+                        ContextMenu="{StaticResource Menu}">
+        </tb:TaskbarIcon>
+
     </Grid>
 </Window>
