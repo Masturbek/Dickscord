@@ -20,8 +20,10 @@ namespace Progect1.ViewModels
             CloseCommand = new RelayCommand<Window>(Close);
             ChangePageCommand = new RelayCommand<string>(ChangePage);
 
-            FriendListViewModel = new FriendListViewModel(this);
             PersonalMessagePageViewModel = new PersonalMessagePageViewModel(this);
+
+            FriendListViewModel = new FriendListViewModel(this, PersonalMessagePageViewModel);
+           
 
               FriendList = new RelayCommand<object>(_ => ToFriendListPage());
 

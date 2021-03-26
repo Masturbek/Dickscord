@@ -1,5 +1,6 @@
 ﻿using Progect1.Models.FriendModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,20 +15,19 @@ namespace Progect1.ViewModels.Pages
     public class FriendListViewModel
     {
         public DMainViewModel dmainviewmodel { get; }
-       
+        
 
-        public FriendListViewModel(DMainViewModel Dmainviewmodel)
+        public FriendListViewModel(DMainViewModel Dmainviewmodel,PersonalMessagePageViewModel personalMessagePageViewModel)
         {
             dmainviewmodel = Dmainviewmodel;   
-            Statics.H(dmainviewmodel);
+            Statics.H(dmainviewmodel, personalMessagePageViewModel);
         }
 
-      
 
-        public static ObservableCollection<Friend> MTTF { get; set; } = new ObservableCollection<Friend>
-        {
-                
-        };
 
+        public static ObservableCollection<Profile> FriendList { get; set; } = new ObservableCollection<Profile>();
+        public static ObservableCollection<Profile> OnlineFriendList { get; set; } = new ObservableCollection<Profile>();
+        public static ObservableCollection<Profile> RequestList { get; set; } = new ObservableCollection<Profile>();
+        public static ObservableCollection<Profile> RequestWaitList { get; set; } = new ObservableCollection<Profile>();
     }
 }

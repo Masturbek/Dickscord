@@ -13,21 +13,28 @@ namespace Progect1.Models.FriendModel
     {
 
     }
-    public class Friend
+    public class Profile
     {
         public string Name { get; set; }
         public string Tag { get; set; }
         public byte[] photo;
 
         public DMainViewModel DMainViewModel;
+        PersonalMessagePageViewModel personalmessagePageViewModel;
         public ICommand Chat { get; }
 
-        public Friend(string name, string tag,DMainViewModel dmainviewmodel)
+        public Profile(string name, string tag, DMainViewModel dmainviewmodel, PersonalMessagePageViewModel personalMessagePageViewModel)
         {
             Name = name;
             Tag = tag;
             DMainViewModel = dmainviewmodel;
-            Chat = new RelayCommand<object>(_ => dmainviewmodel.ChangePage("PersonalChatPage"));   
+            personalmessagePageViewModel = personalMessagePageViewModel;
+            Chat = new RelayCommand<object>(_ => OpenLS());
+            void OpenLS()
+                {
+                personalmessagePageViewModel.Nickname = Name;
+                dmainviewmodel.ChangePage("PersonalChatPage");
+            }
         }
     }
 }

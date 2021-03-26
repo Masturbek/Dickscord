@@ -104,8 +104,8 @@
             </DataTemplate>
         </Grid.Resources>
         <Grid>
-            <ScrollViewer  Margin="0 40 0 4">
-                <ItemsControl  ItemsSource="{Binding MTTF}">
+            <ScrollViewer Margin="0 40 0 4" >
+                <ItemsControl  ItemsSource="{Binding FriendList}">
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>

@@ -20,6 +20,7 @@ namespace Progect1.ViewModels
             NormalizeCommand = new RelayCommand<Window>(Normalize);
             ChangePageCommand = new RelayCommand<string>(ChangePage);
 
+            OkRegCloseCommand = new RelayCommand<object>(_ => { OkReg = Visibility.Collapsed;ChangePage("Login"); });
 
             LoginPageViewModel = new LoginPageViewModel(this);
             RegistrationPageViewModel = new RegistrationPageViewModel(this);
@@ -30,6 +31,21 @@ namespace Progect1.ViewModels
         public ICommand MinimizeCommand { get; }
         public ICommand CloseCommand { get; }
         public ICommand NormalizeCommand { get; }
+        public ICommand OkRegCloseCommand { get; }
+
+        private Visibility okreg = Visibility.Collapsed;
+        public Visibility OkReg
+        {
+            get => okreg;
+            set => SetField(ref okreg, value);
+        }
+
+        private Visibility loading = Visibility.Collapsed;
+        public Visibility Loading
+        {
+            get => loading;
+            set => SetField(ref loading, value);
+        }
 
 
         private void Close(Window window) => window.Close();

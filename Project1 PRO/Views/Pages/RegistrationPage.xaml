@@ -21,23 +21,25 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0" Margin="0 0 0 10">
+                    <StackPanel Grid.Row="0" Margin="0 0 0 5">
                         <TextBlock Text="Почта" 
                                    FontSize="18" 
                                    TextAlignment="Center"
                                    FontWeight="Medium"
                                    Foreground="#FFCCCDCE"
                                    Margin="0 0 0 3"/>
-                        <TextBox Text="{Binding Email}" Style="{StaticResource TextBox.Auth}"/>
+                        <TextBox MaxLength="256" Text="{Binding Email}" Style="{StaticResource TextBox.Auth}"/>
+                        <TextBlock Text="{Binding ErrorEmailText}" Foreground="#FFB60000" FontFamily="Segoe UI Light" Margin="5 0 0 0"/>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Margin="0 0 0 10">
+                    <StackPanel Grid.Row="1" Margin="0 0 0 3">
                         <TextBlock Text="Логин" 
                                    FontSize="18" 
                                    TextAlignment="Center"
                                    FontWeight="Medium"
                                    Foreground="#FFCCCDCE"
                                    Margin="0 0 0 3"/>
-                        <TextBox Text="{Binding Login}" Style="{StaticResource TextBox.Auth}"/>
+                        <TextBox MaxLength="64" Text="{Binding Login}" Style="{StaticResource TextBox.Auth}"/>
+                        <TextBlock Text="{Binding ErrorLoginText}" Foreground="#FFB60000" FontFamily="Segoe UI Light" Margin="5 0 0 0"/>
                     </StackPanel>
                     <StackPanel Grid.Row="2">
                         <TextBlock Text="Пароль" 
@@ -46,10 +48,11 @@
                                    FontWeight="Medium"
                                    Foreground="#FFCCCDCE"
                                    Margin="0 0 0 3"/>
-                        <TextBox Text="{Binding Password}" Style="{StaticResource TextBox.Auth}"/>
+                        <TextBox MaxLength="256" Text="{Binding Password}" Style="{StaticResource TextBox.Auth}"/>
+                        <TextBlock Text="{Binding ErrorPasswordText}" Foreground="#FFB60000" FontFamily="Segoe UI Light" Margin="5 0 0 0"/>
                     </StackPanel>
                 </Grid>
-                <StackPanel Grid.Row="1" Margin="0 25 0 0">
+                <StackPanel Grid.Row="1" Margin="0 10 0 0">
                     <Button VerticalAlignment="Center" HorizontalAlignment="Center"
                             Style="{StaticResource Button.Auth.Big}"
                             Padding="30 3 30 4"

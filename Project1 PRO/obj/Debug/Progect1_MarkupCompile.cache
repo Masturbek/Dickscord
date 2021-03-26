@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\Программирование\Dickscord\Project1 PRO\obj\Debug\
+G:\Programming\DickscordGit\Project1 PRO\obj\Debug\
 Progect1
 none
 false
 DEBUG;TRACE
-G:\Программирование\Dickscord\Project1 PRO\App.xaml
-9-19338285
+G:\Programming\DickscordGit\Project1 PRO\App.xaml
+10954414790
 
-23-178821346
-161652813967
-Controls\VectorButton.xaml;Styles\Colors.xaml;Styles\Controls.xaml;Views\MainWindow.xaml;Views\Pages\FriendList.xaml;Views\Pages\LoginPage.xaml;Views\Pages\PersonalMessagePage.xaml;Views\Pages\RegistrationPage.xaml;Views\Window1.xaml;
+24-644181661
+17-1883571583
+Controls\MessageControl.xaml;Controls\VectorButton.xaml;Styles\Colors.xaml;Styles\Controls.xaml;Views\MainWindow.xaml;Views\Pages\FriendList.xaml;Views\Pages\LoginPage.xaml;Views\Pages\PersonalMessagePage.xaml;Views\Pages\RegistrationPage.xaml;Views\Window1.xaml;
 
 False
 

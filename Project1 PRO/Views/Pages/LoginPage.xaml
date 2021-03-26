@@ -57,7 +57,7 @@
                                 CommandParameter="Registration"/>
                     </StackPanel>
                 </StackPanel>
-                <Button VerticalAlignment="Center" HorizontalAlignment="Center"
+                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"
                                     Style="{StaticResource Button.Auth.Big}"
                                     Padding="30 3 30 4"
                                     Content="Войти" 

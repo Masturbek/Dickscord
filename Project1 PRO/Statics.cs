@@ -15,14 +15,14 @@ namespace Progect1.ViewModels.Pages
         public static MainWindow MW = new MainWindow { DataContext = new MainViewModel() };
         public static Window1 W1 = new Window1 { DataContext = new DMainViewModel() };
      
-        public static void H(DMainViewModel dmainviewmodel)
+        public static void H(DMainViewModel dmainviewmodel, PersonalMessagePageViewModel personalMessagePageViewModel)
         {
-            FriendListViewModel.MTTF.Add(new Friend("Friend 2", "#2222", dmainviewmodel));
-            FriendListViewModel.MTTF.Add(new Friend("Friend 2", "#2222", dmainviewmodel));
-            FriendListViewModel.MTTF.Add(new Friend("Friend 2", "#2222", dmainviewmodel));
-            FriendListViewModel.MTTF.Add(new Friend("Friend 2", "#2222", dmainviewmodel));
-            FriendListViewModel.MTTF.Add(new Friend("Friend 2", "#2222", dmainviewmodel));
-            FriendListViewModel.MTTF.Add(new Friend("Friend 2", "#2222", dmainviewmodel));
+            FriendListViewModel.FriendList.Add(new Profile("Friend 2", "#2222", dmainviewmodel, personalMessagePageViewModel));
+            FriendListViewModel.FriendList.Add(new Profile("Friend 2", "#2222", dmainviewmodel, personalMessagePageViewModel));
+            FriendListViewModel.FriendList.Add(new Profile("Friend 2", "#2222", dmainviewmodel, personalMessagePageViewModel));
+            FriendListViewModel.FriendList.Add(new Profile("Friend 2", "#2222", dmainviewmodel, personalMessagePageViewModel));
+            FriendListViewModel.FriendList.Add(new Profile("Friend 2", "#2222", dmainviewmodel, personalMessagePageViewModel));
+            FriendListViewModel.FriendList.Add(new Profile("Friend 2", "#2222", dmainviewmodel, personalMessagePageViewModel));
         }
         public Statics ()
         {
